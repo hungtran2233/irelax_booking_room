@@ -87,9 +87,9 @@ model user_info {
 
 model news {
   news_id          Int            @id @default(autoincrement())
-  title            String         @db.VarChar(255)
-  content          String         @db.Text
-  datePublished    DateTime?      @default(now()) @db.Timestamp(0)
+  title            String?        @db.VarChar(255)
+  content          String?        @db.VarChar(1000)
+  date_published   DateTime?      @default(now()) @db.Timestamp(0)
   author           String?        @db.VarChar(100)
   views            Int?
   news_category_id Int?

@@ -50,22 +50,22 @@ CREATE TABLE `location` (
 
 CREATE TABLE `news` (
   `news_id` int NOT NULL AUTO_INCREMENT,
-  `title` varchar(255) NOT NULL,
-  `content` text NOT NULL,
-  `datePublished` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `title` varchar(255) DEFAULT NULL,
+  `content` varchar(1000) DEFAULT NULL,
+  `date_published` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `author` varchar(100) DEFAULT NULL,
   `views` int DEFAULT NULL,
   `news_category_id` int DEFAULT NULL,
   PRIMARY KEY (`news_id`),
   KEY `news_category_id` (`news_category_id`),
   CONSTRAINT `news_ibfk_1` FOREIGN KEY (`news_category_id`) REFERENCES `news_category` (`news_category_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 CREATE TABLE `news_category` (
   `news_category_id` int NOT NULL AUTO_INCREMENT,
   `news_category_name` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`news_category_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 CREATE TABLE `role` (
   `user_id` int NOT NULL,
@@ -224,9 +224,20 @@ INSERT INTO `location` (`location_id`, `location_name`, `province`, `country`, `
 (5, 'Tràng An', 'Ninh Bình', 'Việt Nam', '1690532856155_trang-an.jpg'),
 (6, 'Phong Nha', 'Quảng Bình', 'Việt Nam', '1690536378112_phong-nha-ke-bang.jpg');
 
+INSERT INTO `news` (`news_id`, `title`, `content`, `date_published`, `author`, `views`, `news_category_id`) VALUES
+(1, 'Bánh xèo Huế', 'Bánh khoái Huế là món ăn đặc sắc và được du khách nhắc đến nhiều nhất khi đến với vùng đất cố đô ngàn năm lịch sử. Nhìn lần đầu tiên, du khách có thể nhầm lẫn với món bánh xèo Nam Bộ nhưng bản chất lại khác nhau. Bánh khoái nhỏ, dày và có độ giòn hơn bánh xèo. Để tạo nên nét riêng độc đáo này thì cách thức pha bột độc quyền, độ lửa vừa phải và pha nước chấm là những công đoạn quan trọng.', '2023-08-03 22:42:05', 'Hưng Trần', 1200, 1);
+INSERT INTO `news` (`news_id`, `title`, `content`, `date_published`, `author`, `views`, `news_category_id`) VALUES
+(2, 'Phở Hà Nội', 'Bánh phở Hà Nội là loại to, không quá dày để giữ được độ mềm mại. Thịt chín vừa tới và bên trên là phần rau thơm như hành lá, rau mùi, hành củ… Nước dùng nóng hổi được chan vào tô phở và nhiều người thường ăn cùng quẩy.', '2023-08-03 22:42:05', 'Nam Cao', 1530, 1);
 
 
-
+INSERT INTO `news_category` (`news_category_id`, `news_category_name`) VALUES
+(1, 'Ẩm Thực');
+INSERT INTO `news_category` (`news_category_id`, `news_category_name`) VALUES
+(2, 'Điểm đến');
+INSERT INTO `news_category` (`news_category_id`, `news_category_name`) VALUES
+(3, 'Cẩm nang');
+INSERT INTO `news_category` (`news_category_id`, `news_category_name`) VALUES
+(4, 'Văn hóa');
 
 INSERT INTO `role` (`user_id`, `role_name`, `role_desc`) VALUES
 (1, 'user', 'Người dùng được thao tác giới hạn');
