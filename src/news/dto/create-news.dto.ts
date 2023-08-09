@@ -6,7 +6,7 @@ export class CreateNewsDto {
     @ApiProperty({ description: 'content', type: String })
     content: string;
     @ApiProperty({ description: 'date_published', type: Date })
-    date_published: Date;
+    // date_published: Date;
     @ApiProperty({ description: 'author', type: String })
     author: string;
     @ApiProperty({ description: 'views', type: Number })

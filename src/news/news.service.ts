@@ -22,7 +22,7 @@ export class NewsService {
             data: {
                 title: createNewsDto.title,
                 content: createNewsDto.content,
-                date_published: new Date(createNewsDto.date_published),
+                // date_published: new Date(createNewsDto.date_published),
                 author: createNewsDto.author,
                 views: createNewsDto.views,
                 news_category_id: createNewsDto.news_category_id,
